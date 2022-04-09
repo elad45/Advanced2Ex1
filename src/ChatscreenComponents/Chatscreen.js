@@ -17,8 +17,11 @@ var loggingUser = usersList.find(x => x.username === loggedPersonUsername)
                     <div className="col-lg-12">
                         <div className="card chat-app">
                             <div id="plist" className="people-list">
+                                <div className="chat-header clearfix row col-lg-6">
                             <button type="button" className="btn btn-primary">add friend</button>
+                            <img src= {loggingUser.avatar} alt="avatar" />
                             <span>{loggedPersonUsername}</span>
+                            </div>
                                 <div className="input-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fa fa-search" /></span> 
