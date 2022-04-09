@@ -18,14 +18,16 @@ function Registerform() {
     const RegisterClick = (e) => {
         e.preventDefault();
         
+        //checks if username already exists in the system
+        if (usersList.find(x => x.username === userID)){
+            alert("username already exists")
+        }
+
         //checks if passwords are the same
         if (verifiedPassword !== userPassword) {
             alert("Password doesn't match");
         }
-        //checks if username already exists in the system
-        if (usersList.find(x => x.username === userID)){
-        alert("username already exists")
-        }
+        
         
         
         else {
