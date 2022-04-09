@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { usersList } from "./usersDB";
 import Message from "./Message";
 //const[registeredPassword, setPassword] = useState("")
-//hi noam
-
 
 function Registerform() {
 

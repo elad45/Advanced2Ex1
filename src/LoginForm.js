@@ -1,23 +1,30 @@
 import {Link} from "react-router-dom";
+import Chatscreen from "./ChatscreenComponents/Chatscreen";
+import ContactCard from "./ChatscreenComponents/ContactCard";
 import { usersList } from "./usersDB";
 
-const loginClick = () => {
-    let loggingPassword,loggingID;
-    loggingPassword = document.getElementById("loginPassword").value
-    loggingID = document.getElementById("loginID").value
 
-    var loggingUser = usersList.find(x => x.username === loggingID)
-    if (!loggingUser)
-        alert("No such username")
-    else if ((loggingUser) && loggingUser.password === loggingPassword) {
-    console.log(loggingUser) //has to be transferred to the chat component
-    }
-    else {
-        alert("Wrong password")
-    }
-}
 
 function LoginForm() {
+
+    const loginClick = () => {
+        let loggingPassword,loggingID;
+        loggingPassword = document.getElementById("loginPassword").value
+        loggingID = document.getElementById("loginID").value
+    
+        var loggingUser = usersList.find(x => x.username === loggingID)
+        if (!loggingUser)
+            alert("No such username")
+        else if ((loggingUser) && loggingUser.password === loggingPassword) {
+        console.log(loggingUser) //has to be transferred to the chat component
+        localStorage.setItem("connectingUserID",loggingID)
+        window.location.href = "/./chat"
+        }
+        else {
+            alert("Wrong password")
+        }
+    }
+
     return (
         
         <form action="">

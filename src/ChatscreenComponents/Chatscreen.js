@@ -3,10 +3,12 @@ import './Chatscreen.css'
 import { usersList } from '../usersDB';
 import ContactCard from './ContactCard';
 
-var loggedPersonUsername = "Michael"
-var loggingUser = usersList.find(x => x.username === loggedPersonUsername)
 
-function Chatscreen() {
+function Chatscreen(props) {
+    
+var loggedPersonUsername = localStorage.getItem("connectingUserID")
+console.log(loggedPersonUsername); // for testing
+var loggingUser = usersList.find(x => x.username === loggedPersonUsername)
     return (
         <div>
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -15,7 +17,8 @@ function Chatscreen() {
                     <div className="col-lg-12">
                         <div className="card chat-app">
                             <div id="plist" className="people-list">
-                            <button type="button" class="btn btn-primary">add friend</button>
+                            <button type="button" className="btn btn-primary">add friend</button>
+                            <span>{loggedPersonUsername}</span>
                                 <div className="input-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fa fa-search" /></span> 
