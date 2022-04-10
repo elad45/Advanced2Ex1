@@ -2,7 +2,10 @@ import { useDebugValue, useState } from "react";
 import { Link } from "react-router-dom";
 import { usersList } from "./usersDB";
 import Message from "./Message";
-//const[registeredPassword, setPassword] = useState("")
+import LoginForm from "./LoginForm";
+import Chatscreen from "./ChatscreenComponents/Chatscreen";
+
+
 
 function Registerform() {
 
@@ -11,27 +14,28 @@ function Registerform() {
     const [userNick, setNick] = useState("")
     const [userPassword, setPassword] = useState("");
     const [verifiedPassword, setPassword1] = useState("");
-    const [userAvatar, setAvatar] = useState()
-    
+    //const [userAvatar, setAvatar] = useState("")
+
     const RegisterClick = (e) => {
         e.preventDefault();
-        
-        //checks if username already exists in the system
-        if (usersList.find(x => x.username === userID)){
-            alert("username already exists")
-        }
 
         //checks if passwords are the same
         if (verifiedPassword !== userPassword) {
             alert("Password doesn't match");
         }
-        
-        
-        
+        //checks if username already exists in the system
+        if (usersList.find(x => x.username === userID)) {
+            alert("username already exists")
+        }
+
+
         else {
             //in case no avatar was inserted. ------CONDITION HAS TO BE CHECKED!!!!!!!----------------------------
-            if (userAvatar==="")
+            var userAvatar = document.getElementById("Avatar").value
+            if (!userAvatar) {
                 userAvatar = "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+            }
+
             const newUser = {
                 username: userID,
                 password: userPassword,
@@ -41,11 +45,16 @@ function Registerform() {
                 chats: [new Message("Hello", new Date(), "Michael", "Boaz"), new Message("Hello", new Date(), "Boaz", "Michael")]
             }
             usersList.push(newUser)
-            console.log(usersList)
+            localStorage.setItem("usersList", JSON.stringify(usersList))
+            //console.log((JSON.parse(localStorage.getItem("usersList"))))
+            localStorage.setItem("connectingUserID",newUser.username)
+            window.location.href = "/./chat"
+            
+            
         }
     }
     return (
-
+        
         <form action="" onSubmit={RegisterClick}>
             <span className="d-flex justify-content-center">
                 <div>
@@ -68,11 +77,11 @@ function Registerform() {
                         </div>
                     </div>
 
-                    
+
                     <div className="row mb-3">
                         <label htmlFor="Avatar" className="col-sm-3 col-form-label">Avatar</label>
                         <div className="col-sm-7">
-                            <input type="Avatar" onChange={(e) => setAvatar(e.target.value)} className="form-control" id="Avatar" placeholder="Enter Avatar url" value={userAvatar} />
+                            <input type="text"  className="form-control" id="Avatar" placeholder="Enter Avatar url" />
                         </div>
                     </div>
 

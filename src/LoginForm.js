@@ -16,7 +16,6 @@ function LoginForm() {
         if (!loggingUser)
             alert("No such username")
         else if ((loggingUser) && loggingUser.password === loggingPassword) {
-        console.log(loggingUser) //has to be transferred to the chat component
         localStorage.setItem("connectingUserID",loggingID)
         window.location.href = "/./chat"
         }

@@ -20,7 +20,8 @@ const ContactCard = (props) => {
 
     return (
         <div>
-            {friendsObjects.map((friend) => (
+            {
+            friendsObjects.map((friend) => (
                 <div>
                     <div>
                         <li className="clearfix">
