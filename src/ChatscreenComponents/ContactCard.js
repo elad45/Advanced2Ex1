@@ -22,7 +22,7 @@ const ContactCard = (props) => {
         <div>
             {
             friendsObjects.map((friend) => (
-                <div>
+                <div >
                     <div>
                         <li className="clearfix">
                             <img src={friend.avatar} alt="avatar" />

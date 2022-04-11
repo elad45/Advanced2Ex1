@@ -1,7 +1,9 @@
 import React from 'react'
 import './Chatscreen.css'
 import ContactCard from './ContactCard';
-
+import { Button, Modal } from 'react-bootstrap/'
+import { useState } from 'react'
+import AddFriend from './AddFriend';
 
 function Chatscreen(props) {
 
@@ -9,6 +11,12 @@ function Chatscreen(props) {
     console.log(loggedPersonUsername); // for testing
     var usersList = JSON.parse(localStorage.getItem("usersList"))
     var loggingUser = usersList.find(x => x.username === loggedPersonUsername)
+    const [friends, setFriends] = useState(loggingUser.friends);
+    const handleClick = () => {
+        console.log("Yonadav")
+        console.log(loggingUser.friends)
+        
+    }
     return (
         <div>
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -18,7 +26,7 @@ function Chatscreen(props) {
                         <div className="card chat-app">
                             <div id="plist" className="people-list">
                                 <div className="chat-header clearfix row col-lg-6">
-                                    <button type="button" className="btn btn-primary">add friend</button>
+                                <AddFriend loggedUser={loggingUser}  setFriends = {setFriends} />
                                     <img src={loggingUser.avatar} alt="avatar" />
                                     <span>{loggingUser.nickname}</span>
                                 </div>
@@ -29,7 +37,7 @@ function Chatscreen(props) {
                                     <input type="text" className="form-control" placeholder="Search..." />
                                 </div>
                                 <ul className="list-unstyled chat-list mt-2 mb-0">
-                                    <ContactCard userFriends={loggingUser.friends} usersList={usersList} />
+                                    <ContactCard userFriends = {friends} /*userFriends={loggingUser.friends}*/ usersList={usersList} />
                                 </ul>
                             </div>
                             <div className="chat">

@@ -3,8 +3,6 @@ import Chatscreen from "./ChatscreenComponents/Chatscreen";
 import ContactCard from "./ChatscreenComponents/ContactCard";
 import { usersList } from "./usersDB";
 
-
-
 function LoginForm() {
 
     const loginClick = () => {
@@ -47,7 +45,6 @@ function LoginForm() {
                     </div>
                 </div>
                 <div className="row-sm">
-                
                     <button type="button" className="btn btn-secondary" onClick = {loginClick}>Login</button>
                     <label className="m-1">Not registered? click <Link to="/register">here</Link> to register</label>
                 </div>

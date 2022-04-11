@@ -41,7 +41,7 @@ function Registerform() {
                 password: userPassword,
                 nickname: userNick,
                 avatar: userAvatar,
-                friends: "",
+                friends: [],
                 chats: [new Message("Hello", new Date(), "Michael", "Boaz"), new Message("Hello", new Date(), "Boaz", "Michael")]
             }
             usersList.push(newUser)
