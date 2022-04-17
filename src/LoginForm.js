@@ -1,24 +1,24 @@
-import {Link} from "react-router-dom";
-import Chatscreen from "./ChatscreenComponents/Chatscreen";
-import ContactCard from "./ChatscreenComponents/ContactCard";
-import { usersList } from "./usersDB";
+import {Link, useNavigate} from "react-router-dom";
+import usersList from './usersDB'
+
 
 function LoginForm() {
+    const navigate = useNavigate();
 
     const loginClick = () => {
         let loggingPassword,loggingID;
-        loggingPassword = document.getElementById("loginPassword").value
-        loggingID = document.getElementById("loginID").value
+        loggingPassword = document.getElementById("loginPassword").value;
+        loggingID = document.getElementById("loginID").value;
     
-        var loggingUser = usersList.find(x => x.username === loggingID)
+        var loggingUser = usersList.find(x => x.username === loggingID);
         if (!loggingUser)
-            alert("No such username")
+            alert("No such username");
         else if ((loggingUser) && loggingUser.password === loggingPassword) {
-        localStorage.setItem("connectingUserID",loggingID)
-        window.location.href = "/./chat"
+            localStorage.setItem('currentUser', loggingUser.username)
+        navigate("/chat");
         }
         else {
-            alert("Wrong password")
+            alert("Wrong password");
         }
     }
 

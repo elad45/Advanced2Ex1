@@ -1,35 +1,29 @@
 import { Button, Modal } from 'react-bootstrap/'
 import { useState } from 'react'
 import React from 'react'
-import Chatscreen from './Chatscreen';
+import usersList from '../usersDB';
+import './AddFriend.css'
 
 function AddFriend(props) {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleAdd = () => {
         let friendNick  = document.getElementById("friendNick").value
-        let usersList = JSON.parse(localStorage.getItem("usersList"))
         let friendUser = usersList.find(x => x.nickname === friendNick)
-        console.log(friendUser)
         if (friendUser) {
-            console.log("in addFriend") //debug
-            props.setFriends((prevFriends)=>{
-                let newFriends=[...prevFriends];
+            props.setFriends((currentFriends)=>{
+                let newFriends=[...currentFriends];
                 newFriends.push(friendNick)
                 return newFriends;
             })
-            // props.loggedUser.friends.push(friendNick)
-            console.log(props.loggedUser.friends); //debug    
         }
         handleClose();
-            console.log("closing")
     }
 
     return (
         <div>
-            <Button variant="primary" onClick={handleShow}>Add friend</Button>
+            <Button id="addFriendButton" onClick={handleShow}>Add friend</Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add friend to chat</Modal.Title>
