@@ -17,7 +17,7 @@ const ContactCard = (props) => {
     usersList.forEach(creatingFriendsArr)
 
     return (
-            <ul className="list-unstyled chat-list overflow-auto h-100" id="friendList">
+            <ul className="list-unstyled chat-list overflow-auto" id="friendsList">
                 {
                     friendsObjects.map((friend) => (
                         <div onClick={() => { props.setFriendChat(friend) }}>
