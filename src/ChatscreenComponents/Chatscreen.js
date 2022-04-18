@@ -29,6 +29,7 @@ function Chatscreen(props) {
         if (newMessageText == "") { return }
         var newMessage = new Message(newMessageText, new Date(), "text", loggingUser.nickname, friendChat.nickname)
         loggingUser.chats.push(newMessage);
+        document.getElementById("chatBar").value = "";
         setMessage((messages) => {
             let newUserMessage = [...messages]
             newUserMessage.push(newMessage)
