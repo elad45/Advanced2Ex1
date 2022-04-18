@@ -1,23 +1,27 @@
-import {Link} from "react-router-dom";
-import { usersList } from "./usersDB";
+import {Link, useNavigate} from "react-router-dom";
+import usersList from './usersDB'
 
-const loginClick = () => {
-    let loggingPassword,loggingID;
-    loggingPassword = document.getElementById("loginPassword").value
-    loggingID = document.getElementById("loginID").value
-
-    var loggingUser = usersList.find(x => x.username === loggingID)
-    if (!loggingUser)
-        alert("No such username")
-    else if ((loggingUser) && loggingUser.password === loggingPassword) {
-    console.log(loggingUser) //has to be transferred to the chat component
-    }
-    else {
-        alert("Wrong password")
-    }
-}
 
 function LoginForm() {
+    const navigate = useNavigate();
+
+    const loginClick = () => {
+        let loggingPassword,loggingID;
+        loggingPassword = document.getElementById("loginPassword").value;
+        loggingID = document.getElementById("loginID").value;
+    
+        var loggingUser = usersList.find(x => x.username === loggingID);
+        if (!loggingUser)
+            alert("No such username");
+        else if ((loggingUser) && loggingUser.password === loggingPassword) {
+            localStorage.setItem('currentUser', loggingUser.username)
+        navigate("/chat");
+        }
+        else {
+            alert("Wrong password");
+        }
+    }
+
     return (
         
         <form action="">
@@ -41,7 +45,6 @@ function LoginForm() {
                     </div>
                 </div>
                 <div className="row-sm">
-                
                     <button type="button" className="btn btn-secondary" onClick = {loginClick}>Login</button>
                     <label className="m-1">Not registered? click <Link to="/register">here</Link> to register</label>
                 </div>

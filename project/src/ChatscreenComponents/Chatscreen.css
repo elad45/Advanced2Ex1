@@ -4,31 +4,21 @@ body{
 
 /* handles the features of the left */
 .chat-app .people-list {
-    width: 280px;
+    width: 19.3%;
     position: absolute;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-right: 20px;
-
-    z-index: 7
+    padding-left: 1.4%;
+    padding-top: 1.5%;
+    padding-right: 1.4%;
 }
 
 /* the size of the loggingUser picture */
 #myAvatar{
-    width: 100px;
+    width: 42%;
 }
 
 /* padding of the loggingUser profile */
 #myProfile{
-    padding-bottom: 110px;
-}
-
-#profileAndButton{
-    position: relative;
-    top: 0%;
-    bottom: 0%;
-    left: 0%;
-    right: 0%;
+    padding-bottom: 45%;
 }
 
 /* the size of the main window */
@@ -42,11 +32,11 @@ body{
 
 /* the loggingUser name, size and font */
 #myNickname{
-    padding-left: 7px;
-    padding-top: 25px;
-    font-size: 30px;
-    font-weight:700;
     position: absolute;
+    padding-left: 2.5%;
+    padding-top: 10%;
+    font-size:3vh;
+    font-weight:700;
 }
 
 #user-friends-containr{
@@ -80,8 +70,8 @@ body{
 
 /* seperates between the lefy side and the right side */
 .chat-app .chat {
-    margin-left: 280px;
-    border-left: 1px solid #eaeaea
+    margin-left: 19.25%;
+    border-left: 2px solid #eaeaea
 }
 
 #people-list{
@@ -94,9 +84,7 @@ body{
 
 /*padding between the left side elemetns */
 .people-list .chat-list li {
-    padding: 10px 15px;
-    list-style: none;
-    border-radius: 3px
+    padding: 4% 8%;
 }
 
 /*hovering above left side elements */
@@ -107,12 +95,12 @@ body{
 
 /*just the font size of some stuff */
 .people-list .chat-list li .name {
-    font-size: 15px
+    font-size: 100%;
 }
 
 /*size of the left side pictures */
 .people-list .chat-list img {
-    width: 45px;
+    width: 20%;
     border-radius: 50%
 }
 
@@ -125,13 +113,13 @@ body{
 /*just padding between the pictures the the details about them*/
 .people-list .about {
     float: left;
-    padding-left: 8px
+    padding-left: 4%;
 }
 
 /*status of the contactCard */
 .people-list .status {
     color: #999;
-    font-size: 13px
+    font-size: 90%;
 }
 
 #chat-header{
@@ -144,42 +132,40 @@ body{
 
 /*right side header padding */
 .chat .chat-header {
-    padding-right:  25px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-right:  2.5%;
+    padding-top: 1.75%;
     border-bottom: 2px solid #f4f7f6
 }
 
 /* padding the name of the friend at the header */
 #friendChat-nickname{
-    padding-right: 20px;
+    padding-right: 2.5%;
 }
 
 /*size of the header picture */
 .chat .chat-header img {
     float: right;
     border-radius: 100px;
-    width: 100px;
+    width: 9%;
 }
 
 /*size and padding of the name at the header */
 .chat .chat-header .chat-about {
     float: right;
-    font-size: 50px;
-    font-weight: 500;
-    padding-left: 15px;
-    padding-top: 11px;
+    font-size: 5vh;
+    font-weight: 700;
+    padding-top: 1%;
 }
 
 /* cool looks for the messages */
 .message {
+    position: relative;
+    display: inline-block;
     color: #444;
     padding: 18px 20px;
     line-height: 26px;
     font-size: 16px;
     border-radius: 7px;
-    display: inline-block;
-    position: relative
 }
 
 /* background of the messages*/
@@ -191,11 +177,6 @@ body{
 .other-message {
     background: #e8f1f3;
     text-align: right
-}
-
-/* general padding for the messages */
-.chat .chat-message {
-    padding: 20px
 }
 
 /* for different size screens*/

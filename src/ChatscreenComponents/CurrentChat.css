@@ -1,0 +1,38 @@
+.iconBoxes{
+    font-size: 24px;
+}
+#imageUpload {
+    border: solid;
+    border-right: none;
+}
+#videoUpload{
+    border: solid;
+    border-right: none;
+}
+#recordingUpload{
+    border: solid;
+    border-right: none;
+}
+
+/*general padding*/
+#chat-messages-list{
+    list-style: none;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    /* removes the default margin at the bottom */
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+#chat-messages{
+    padding-bottom: 15px;
+}
+
+#chat-history-container{
+    position:absolute;
+    top: 22%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+}
