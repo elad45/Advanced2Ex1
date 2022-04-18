@@ -34,8 +34,9 @@ function Chatscreen(props) {
              return newUserMessage
          })
     }
-    
-    useEffect(()=>{element.scrollIntoView(false)})
+    useEffect(()=>{
+        if(element)
+        element.scrollIntoView(false)})
 
     var handleImageMsg = ()=> {
         console.log("upload Image");
@@ -53,6 +54,11 @@ function Chatscreen(props) {
 
         };
         reader.readAsDataURL(thisElement.files[0]);
+    }
+
+
+    var clickImageInput = ()=>{
+        document.getElementById("imageInput").click();
     }
 
     return (
@@ -77,8 +83,9 @@ function Chatscreen(props) {
                         <CurrentChat loggingUser={loggingUser} hisFriend={friendChat} />
                         <div className="input-group mb-3" id="chat-line">
                             <div className="input-group-prepend">
-                                <button className="iconBoxes bi bi-image" id="imageUpload"><i> </i></button>
-                                <input id="imageInput" type="file" onChange= {handleImageMsg} accept="image/*" style={{ opacity: "0", width: "20%" }}  ></input>
+                                <input id="imageInput" type="file" onChange= {handleImageMsg} accept="image/*" style={{ opacity: "0", width: "20%" }} hidden></input>
+                                <button className="iconBoxes bi bi-image" id="imageUpload" onClick={clickImageInput}><i> </i></button>
+                                
                                 <button className="iconBoxes bi bi-camera-reels" id="videoUpload"><i ></i></button>
                                 <button className="iconBoxes bi bi-mic" id="recordingUpload" ><i></i></button>
                             </div>
