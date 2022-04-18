@@ -1,7 +1,7 @@
 import React from 'react'
 import './Chatscreen.css'
 import ContactCard from './ContactCard';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddFriend from './AddFriend';
 import usersList from '../usersDB';
 import CurrentChat from './CurrentChat';
@@ -20,18 +20,22 @@ function Chatscreen(props) {
 
     const [userMessages, setMessage] = useState(loggingUser.chats)
 
+    const element = document.getElementById("chat-messages-list");
 
     var handleSendMessage = () => {
         var newMessageText = document.getElementById("chatBar").value
+        //blank message
+        if (newMessageText==""){return}
         var newMessage = new Message(newMessageText, new Date(),"text", loggingUser.nickname, friendChat.nickname)
         loggingUser.chats.push(newMessage);
          setMessage((messages) => {
              let newUserMessage = [...messages]
              newUserMessage.push(newMessage)
-             console.log(newUserMessage)
              return newUserMessage
          })
     }
+    
+    useEffect(()=>{element.scrollIntoView(false)})
 
     var handleImageMsg = ()=> {
         console.log("upload Image");
@@ -44,7 +48,6 @@ function Chatscreen(props) {
          setMessage((messages) => {
              let newUserMessage = [...messages]
              newUserMessage.push(newMessage)
-             console.log(newUserMessage)
              return newUserMessage
          })
 

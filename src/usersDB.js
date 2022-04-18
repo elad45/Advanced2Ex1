@@ -49,8 +49,8 @@ var usersList = [
      nickname: "Yaakov91",
      avatar: "https://bootdey.com/img/Content/avatar/avatar6.png",
      friends: ["Moshe45","Michael12"],    
-     chats: [new Message("Hello", new Date(),"Yaakov91","Moshe45"),new Message("Hello", new Date(),"Moshe45","Yaakov91"),
-     new Message("Hello Michael12", new Date(),"Yaakov91","Michael12"), new Message("Hello Yaakov91", new Date(),"Michael12","Yaakov91")]
+     chats: [new Message("Hello", new Date(),"text","Yaakov91","Moshe45"),new Message("Hello", new Date(),"text","Moshe45","Yaakov91"),
+     new Message("Hello Michael12", new Date(),"text","Yaakov91","Michael12"), new Message("Hello Yaakov91", new Date(),"text","Michael12","Yaakov91")]
     }
 ]
 

@@ -14,9 +14,10 @@ const CurrentChat = (props) => {
     ((message.author == props.loggingUser.nickname && message.receiver == props.hisFriend.nickname) ||
         (message.author == props.hisFriend.nickname && message.receiver == props.loggingUser.nickname)))
 
+        
     return (
         <div id="chat-history-container">
-            <div className="chat-history overflow-auto h-100">
+            <div className="chat-history overflow-auto h-100" id = "scrollhere">
                 <ul id="chat-messages-list">
                     {
                         loggingUserMessages.map((message) => {
