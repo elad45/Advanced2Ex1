@@ -51,6 +51,39 @@ var usersList = [
      friends: ["Moshe45","Michael12"],    
      chats: [new Message("Hello", new Date(),"text","Yaakov91","Moshe45"),new Message("Hello", new Date(),"text","Moshe45","Yaakov91"),
      new Message("Hello Michael12", new Date(),"text","Yaakov91","Michael12"), new Message("Hello Yaakov91", new Date(),"text","Michael12","Yaakov91")]
+    },
+
+    {username: "11",
+     password: "125",
+     nickname: "11",
+     avatar: "https://bootdey.com/img/Content/avatar/avatar6.png",
+     friends: ["Moshe45","Michael12"],    
+     chats: [new Message("Hello", new Date(),"text","Yaakov91","Moshe45"),new Message("Hello", new Date(),"text","Moshe45","Yaakov91"),
+     new Message("Hello Michael12", new Date(),"text","Yaakov91","Michael12"), new Message("Hello Yaakov91", new Date(),"text","Michael12","Yaakov91")]
+    },
+    {username: "22",
+     password: "125",
+     nickname: "22",
+     avatar: "https://bootdey.com/img/Content/avatar/avatar6.png",
+     friends: ["Moshe45","Michael12"],    
+     chats: [new Message("Hello", new Date(),"text","Yaakov91","Moshe45"),new Message("Hello", new Date(),"text","Moshe45","Yaakov91"),
+     new Message("Hello Michael12", new Date(),"text","Yaakov91","Michael12"), new Message("Hello Yaakov91", new Date(),"text","Michael12","Yaakov91")]
+    },
+    {username: "33",
+     password: "125",
+     nickname: "33",
+     avatar: "https://bootdey.com/img/Content/avatar/avatar6.png",
+     friends: ["Moshe45","Michael12"],    
+     chats: [new Message("Hello", new Date(),"text","Yaakov91","Moshe45"),new Message("Hello", new Date(),"text","Moshe45","Yaakov91"),
+     new Message("Hello Michael12", new Date(),"text","Yaakov91","Michael12"), new Message("Hello Yaakov91", new Date(),"text","Michael12","Yaakov91")]
+    },
+    {username: "44",
+     password: "125",
+     nickname: "44",
+     avatar: "https://bootdey.com/img/Content/avatar/avatar6.png",
+     friends: ["Moshe45","Michael12"],    
+     chats: [new Message("Hello", new Date(),"text","Yaakov91","Moshe45"),new Message("Hello", new Date(),"text","Moshe45","Yaakov91"),
+     new Message("Hello Michael12", new Date(),"text","Yaakov91","Michael12"), new Message("Hello Yaakov91", new Date(),"text","Michael12","Yaakov91")]
     }
 ]
 
