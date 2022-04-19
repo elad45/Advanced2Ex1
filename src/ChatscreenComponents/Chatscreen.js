@@ -17,12 +17,12 @@ function Chatscreen(props) {
     // will be updated every time we add a friend to the current user
     const [friends, setFriends] = useState(loggingUser.friends);
     // will be updated every time we click on a contact Card
-    const [friendChat, setFriendChat] = useState(usersList[0])
+    const [friendChat, setFriendChat] = useState("")
 
     const [userMessages, setMessage] = useState(loggingUser.chats)
 
     const element = document.getElementById("chat-messages-list");
-
+   
     var handleSendMessage = () => {
         var newMessageText = document.getElementById("chatBar").value
         //blank message
@@ -138,7 +138,7 @@ function Chatscreen(props) {
                             </div>
                         </div>
                         <input type="text" className="form-control" id="chatBar" placeholder="New message here..."></input>
-                        <button className="btn btn btn-outline-dark" id="chatBox" type="button" onClick={handleSendMessage}> Send</button>
+                        <button className="btn btn-secondary" id="chatBox" type="button" onClick={handleSendMessage}> Send</button>
                     </div>
                 </div>
             </div>

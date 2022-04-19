@@ -1,6 +1,7 @@
 import Message from "./Message";
 import usersList from './usersDB'
 import {Link ,useNavigate} from 'react-router-dom'
+import './Registerform.css'
 
 function Registerform() {
     const navigate = useNavigate();
@@ -62,10 +63,10 @@ function Registerform() {
             localStorage.setItem('currentUser', newUser.username)
             navigate("/chat")
 
-
         }
     }
     return (
+        <div className="registerbox">
             <span className="d-flex justify-content-center">
                 <div>
                     <div className="d-flex justify-content-center">
@@ -115,6 +116,7 @@ function Registerform() {
                     </div>
                 </div>
             </span>
+            </div>
     );
 }
 

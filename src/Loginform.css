@@ -1,22 +1,21 @@
-.registerbox{
-    padding-top:0%;
-    margin-top:0%;
+.loginbox{
+    top:50%;
     left:50%;
     width:30%;
     background:rgb(194, 157, 145);
     position:absoulte;
-    transform: translate(+105%,+8%);
+    transform: translate(+105%,+15%);
     box-sizing: border-box;
     border-radius: 4%;
     padding-bottom: 1%;
   }
 
-  .registerbox h1{
+  .loginbox h1{
       color: white;
-      margin-top: 2%;
+      margin-top: 4%;
   }
 
-  .registerbox input{
+  .loginbox input{
       border-left:2%;
       margin-left: 12%;
   }
