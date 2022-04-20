@@ -32,6 +32,7 @@ function Chatscreen(props) {
         var newMessage = new Message(newMessageText, time, "text", loggingUser.nickname, friendChat.nickname)
         friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, newMessageText + "*" + time)
         loggingUser.chats.push(newMessage)
+        // temporary line, thats the work of the server
         friendChat.chats.push(newMessage)
         document.getElementById("chatBar").value = "";
         setMessage((messages) => {
@@ -52,6 +53,7 @@ function Chatscreen(props) {
         reader.onload = function () {
             var thisImage = reader.result;
             var time = new Date().getTime()
+            // temporary line, thats the work of the server
             friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent an image" + "*" + time)
             var newMessage = new Message(thisImage, time, "image", loggingUser.nickname, friendChat.nickname)
             loggingUser.chats.push(newMessage)
@@ -73,6 +75,7 @@ function Chatscreen(props) {
         reader.onload = function () {
             var thisVideo = reader.result
             var time = new Date().getTime()
+            // temporary line, thats the work of the server
             friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent a video" + "*" + time)
             var newMessage = new Message(thisVideo, time, "video", loggingUser.nickname, friendChat.nickname)
             loggingUser.chats.push(newMessage)
