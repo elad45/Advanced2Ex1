@@ -30,7 +30,13 @@ function Chatscreen(props) {
         if (newMessageText == "") { return }
         var time = new Date().getTime()
         var newMessage = new Message(newMessageText, time, "text", loggingUser.nickname, friendChat.nickname)
-        friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, newMessageText + "*" + time)
+        if(loggingUser.nickname>=friendChat.nickname){
+            loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, newMessageText + "*" + time)
+            friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, newMessageText + "*" + time)
+        } else {
+            loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, newMessageText + "*" + time)
+            friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, newMessageText + "*" + time)
+        }
         loggingUser.chats.push(newMessage)
         // temporary line, thats the work of the server
         friendChat.chats.push(newMessage)
@@ -53,10 +59,16 @@ function Chatscreen(props) {
         reader.onload = function () {
             var thisImage = reader.result;
             var time = new Date().getTime()
-            // temporary line, thats the work of the server
-            friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent an image" + "*" + time)
+            if(loggingUser.nickname>=friendChat.nickname){
+                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent an image" + "*" + time)
+                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent an image" + "*" + time)
+            } else {
+                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent an image" + "*" + time)
+                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent an image" + "*" + time)
+            }
             var newMessage = new Message(thisImage, time, "image", loggingUser.nickname, friendChat.nickname)
             loggingUser.chats.push(newMessage)
+            // temporary line, thats the work of the server
             friendChat.chats.push(newMessage)
             setMessage((messages) => {
                 let newUserMessage = [...messages]
@@ -75,10 +87,16 @@ function Chatscreen(props) {
         reader.onload = function () {
             var thisVideo = reader.result
             var time = new Date().getTime()
-            // temporary line, thats the work of the server
-            friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent a video" + "*" + time)
+            if(loggingUser.nickname>=friendChat.nickname){
+                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent a video" + "*" + time)
+                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent a video" + "*" + time)
+            } else {
+                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent a video" + "*" + time)
+                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent a video" + "*" + time)
+            }
             var newMessage = new Message(thisVideo, time, "video", loggingUser.nickname, friendChat.nickname)
             loggingUser.chats.push(newMessage)
+            // temporary line, thats the work of the server
             friendChat.chats.push(newMessage)
             setMessage((messages) => {
                 let newUserMessage = [...messages]

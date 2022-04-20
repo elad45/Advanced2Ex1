@@ -45,7 +45,11 @@ const ContactCard = (props) => {
     }
 
     function lastMessages(friend){
-        var combinedString = props.loggingUser.lastMessages.get(friend.nickname + props.loggingUser.nickname)
+        if(props.loggingUser.nickname>=friend.nickname){
+            var combinedString = props.loggingUser.lastMessages.get(props.loggingUser.nickname + friend.nickname)
+        } else {
+            var combinedString = props.loggingUser.lastMessages.get(friend.nickname + props.loggingUser.nickname)
+        }
         if (typeof combinedString === 'string'){
             let splitString = combinedString.split('*');
             return splitString[0]
