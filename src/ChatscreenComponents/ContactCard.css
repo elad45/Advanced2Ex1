@@ -1,12 +1,21 @@
-#wrapper{
-    position: relative;
-    top: 0%;
-    left: 0%;
-    right: 0%;
-    bottom: 100%;
+#latestComment{
+    font-size: 14px;
+    font-weight: 800;
 }
 
-#friendList{
-    overflow: hidden;
-    overflow-y: scroll;
+#time{
+color: grey;
+font-size: small;
+padding-top: 0;
+padding-right: 0;
+}
+
+#wrapper{
+    display: grid;
+    grid-template-columns: 0.9fr 2fr 1fr;
+}
+#wrapper-2{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }

@@ -21,14 +21,25 @@ function Chatscreen(props) {
 
     const [userMessages, setMessage] = useState(loggingUser.chats)
 
-    const element = document.getElementById("chat-messages-list");
+    //const element = document.getElementById("chat-messages-list");
    
     var handleSendMessage = () => {
+
         var newMessageText = document.getElementById("chatBar").value
-        //blank message
+        // blank message
         if (newMessageText == "") { return }
-        var newMessage = new Message(newMessageText, new Date(), "text", loggingUser.nickname, friendChat.nickname)
-        loggingUser.chats.push(newMessage);
+        var time = new Date().getTime()
+        var newMessage = new Message(newMessageText, time, "text", loggingUser.nickname, friendChat.nickname)
+        if(loggingUser.nickname>=friendChat.nickname){
+            loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, newMessageText + "*" + time)
+            friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, newMessageText + "*" + time)
+        } else {
+            loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, newMessageText + "*" + time)
+            friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, newMessageText + "*" + time)
+        }
+        loggingUser.chats.push(newMessage)
+        // temporary line, thats the work of the server
+        friendChat.chats.push(newMessage)
         document.getElementById("chatBar").value = "";
         setMessage((messages) => {
             let newUserMessage = [...messages]
@@ -36,19 +47,31 @@ function Chatscreen(props) {
             return newUserMessage
         })
     }
-    useEffect(() => {
-        if (element)
-            element.scrollIntoView(false)
-    })
+  //  useEffect(() => {
+  //      if (element)
+  //          element.scrollIntoView(false)
+  //  })
 
+    
     var handleImageMsg = () => {
         console.log("upload Image");
         var thisElement = document.getElementById("imageInput");
         var reader = new FileReader();
         reader.onload = function () {
             var thisImage = reader.result;
-            var newMessage = new Message(thisImage, new Date(), "image", loggingUser.nickname, friendChat.nickname);
-            loggingUser.chats.push(newMessage);
+            var time = new Date().getTime()
+            if(loggingUser.nickname>=friendChat.nickname){
+                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "An image has been sent" + "*" + time)
+                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "An image has been sent" + "*" + time)
+            } else {
+                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "An image has been sent" + "*" + time)
+                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "An image has been sent" + "*" + time)
+            }
+            var newMessage = new Message(thisImage, time, "image", loggingUser.nickname, friendChat.nickname)
+            loggingUser.chats.push(newMessage)
+            // temporary line, thats the work of the server
+            friendChat.chats.push(newMessage)
+            document.getElementById("imageInput").value = "";
             setMessage((messages) => {
                 let newUserMessage = [...messages]
                 newUserMessage.push(newMessage)
@@ -57,6 +80,7 @@ function Chatscreen(props) {
 
         };
         reader.readAsDataURL(thisElement.files[0]);
+        
     };
 
     var handleVideoMsg = () => {
@@ -64,9 +88,20 @@ function Chatscreen(props) {
         var thisElement = document.getElementById("videoInput");
         var reader = new FileReader();
         reader.onload = function () {
-            var thisVideo = reader.result;
-            var newMessage = new Message(thisVideo, new Date(), "video", loggingUser.nickname, friendChat.nickname);
-            loggingUser.chats.push(newMessage);
+            var thisVideo = reader.result
+            var time = new Date().getTime()
+            if(loggingUser.nickname>=friendChat.nickname){
+                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "A video has been sent" + "*" + time)
+                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "A video has been sent" + "*" + time)
+            } else {
+                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "A video has been sent" + "*" + time)
+                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "A video has been sent" + "*" + time)
+            }
+            var newMessage = new Message(thisVideo, time, "video", loggingUser.nickname, friendChat.nickname)
+            loggingUser.chats.push(newMessage)
+            // temporary line, thats the work of the server
+            friendChat.chats.push(newMessage)
+            document.getElementById("videoInput").value = "";
             setMessage((messages) => {
                 let newUserMessage = [...messages]
                 newUserMessage.push(newMessage)
@@ -86,25 +121,32 @@ function Chatscreen(props) {
     var clickVideoInput = () => {
         document.getElementById("videoInput").click();
     }
-
+    const element = document.getElementById("chat-messages-list");        
+    useEffect(() => {
+        if (element){
+            element.scrollTop = element.scrollHeight
+        }
+    })
     return (
         <div>
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
             <div className="clearfix card chat-app" id="chat-window">
                 <div className="people-list" id="people-list">
-                    <div className="chat-header clearfix">
+                    <div className="chat-header" id="profileAndButton">
                         <div id="myProfile">
-                            <img className="col" id="myAvatar" src={loggingUser.avatar} />
-                            <span className="col" id="myNickname">{loggingUser.nickname}</span>
+                        <div><img id="myAvatar" src={loggingUser.avatar} /></div>
+                        <div><span id="myNickname">{loggingUser.nickname}</span></div>
                         </div>
-                        <AddFriend loggedUser={loggingUser} setFriends={setFriends} />
+                        <AddFriend loggingUser={loggingUser} setFriends={setFriends} />
                     </div>
-                    <ContactCard userFriends={friends} setFriendChat={setFriendChat} />
+                    <ContactCard loggingUser={loggingUser} userFriends={friends} setFriendChat={setFriendChat} />
                 </div>
-                <div className="col-9.5 chat" id="rightSide">
-                    <div className="chat-header clearfix" id="chat-header" >
-                        <img src={friendChat.avatar} />
-                        <div className="m-b-0 chat-about" id="friendChat-nickname">{friendChat.nickname}</div>
+                <div className="chat" id="rightSide">
+                    <div className="chat-header" id="chat-header" >
+                        <div id="chat-header-avatar-name">
+                            <img src={friendChat.avatar} id="chat-header-avatar" />
+                            <div className="chat-about" id="chat-header-name">{friendChat.nickname}</div>
+                        </div>
                     </div>
                     <CurrentChat loggingUser={loggingUser} hisFriend={friendChat} />
                     <div className="input-group mb-3" id="chat-line">

@@ -14,22 +14,21 @@ const CurrentChat = (props) => {
     ((message.author == props.loggingUser.nickname && message.receiver == props.hisFriend.nickname) ||
         (message.author == props.hisFriend.nickname && message.receiver == props.loggingUser.nickname)))
 
+
     return (
-        <div id="chat-history-container">
-            <div className="chat-history overflow-auto h-100" id="scrollhere">
-                <ul id="chat-messages-list">
+                <ul className="chat-history overflow-auto h-100" id="chat-messages-list">
                     {
                         loggingUserMessages.map((message) => {
                             if (message.type == "text") {
                                 return (
                                     message.author == props.loggingUser.nickname ?
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data">
                                             </div>
                                             <div className="message my-message">{message.data}</div>
                                         </li>)
                                         :
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data text-right">
                                             </div>
                                             <div className="message other-message float-right">{message.data} </div>
@@ -40,13 +39,13 @@ const CurrentChat = (props) => {
                             else if (message.type == "image") {
                                 return (
                                     message.author == props.loggingUser.nickname ?
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data">
                                             </div>
                                             <img className="message my-message" style={{ maxWidth: "50%" }} src={message.data} />
                                         </li>)
                                         :
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data text-right">
                                             </div>
                                             <img className="message other-message float-right" style={{ maxWidth: "50%" }} src={message.data} />
@@ -57,7 +56,7 @@ const CurrentChat = (props) => {
                             else if (message.type == "audio") {
                                 return (
                                     message.author == props.loggingUser.nickname ?
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data">
                                             </div>
                                             <audio controls className="message my-message">
@@ -66,7 +65,7 @@ const CurrentChat = (props) => {
                                             </audio>
                                         </li>)
                                         :
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data text-right">
                                             </div>
                                             <audio controls className="message my-message">
@@ -80,7 +79,7 @@ const CurrentChat = (props) => {
                             else if (message.type == "video") {
                                 return (
                                     message.author == props.loggingUser.nickname ?
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data">
                                             </div>
                                             <video controls className="message my-message" style={{ maxWidth: "65%" }}>
@@ -89,7 +88,7 @@ const CurrentChat = (props) => {
                                             </video>
                                         </li>)
                                         :
-                                        (<li className="clearfix" id="chat-messages">
+                                        (<li className="clearfix chat-messages">
                                             <div className="message-data text-right">
                                             </div>
                                             <video controls className="message my-message" style={{ maxWidth: "65%" }}>
@@ -99,17 +98,9 @@ const CurrentChat = (props) => {
                                         </li>)
                                 )
                             }
-
-
-
-
-
-
                         })
                     }
                 </ul>
-            </div>
-        </div>
     );
 }
 

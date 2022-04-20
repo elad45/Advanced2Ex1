@@ -42,9 +42,6 @@ function Registerform() {
         else if (passwordVerification !== userPassword) {
                     alert("Password doesn't match");
                 }
-        
-        
-
         else {
             //in case no avatar was inserted. ------CONDITION HAS TO BE CHECKED!!!!!!!----------------------------
             if (!userAvatar) {
@@ -57,7 +54,8 @@ function Registerform() {
                 nickname: userNick,
                 avatar: userAvatar,
                 friends: [],
-                chats: [new Message("Hello", new Date(), "Michael", "Boaz34"), new Message("Hello", new Date(), "Boaz34", "Michael12")]
+                chats: [],
+                lastMessages: new Map()
             }
             usersList.push(newUser)
             localStorage.setItem('currentUser', newUser.username)
