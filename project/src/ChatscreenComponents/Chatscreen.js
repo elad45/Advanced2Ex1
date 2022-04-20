@@ -24,12 +24,15 @@ function Chatscreen(props) {
     const element = document.getElementById("chat-messages-list");
    
     var handleSendMessage = () => {
+
         var newMessageText = document.getElementById("chatBar").value
-        friendChat.lastMessages.set([loggingUser.nickname, friendChat.nickname], newMessageText)
-        //blank message
+        // blank message
         if (newMessageText == "") { return }
-        var newMessage = new Message(newMessageText, new Date(), "text", loggingUser.nickname, friendChat.nickname)
-        loggingUser.chats.push(newMessage);
+        var time = new Date().getTime()
+        var newMessage = new Message(newMessageText, time, "text", loggingUser.nickname, friendChat.nickname)
+        friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, newMessageText + "*" + time)
+        loggingUser.chats.push(newMessage)
+        friendChat.chats.push(newMessage)
         document.getElementById("chatBar").value = "";
         setMessage((messages) => {
             let newUserMessage = [...messages]
@@ -43,14 +46,16 @@ function Chatscreen(props) {
     })
 
     var handleImageMsg = () => {
-        friendChat.lastMessages.set([loggingUser.nickname, friendChat.nickname], "Sent an image")
         console.log("upload Image");
         var thisElement = document.getElementById("imageInput");
         var reader = new FileReader();
         reader.onload = function () {
             var thisImage = reader.result;
-            var newMessage = new Message(thisImage, new Date(), "image", loggingUser.nickname, friendChat.nickname);
-            loggingUser.chats.push(newMessage);
+            var time = new Date().getTime()
+            friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent an image" + "*" + time)
+            var newMessage = new Message(thisImage, time, "image", loggingUser.nickname, friendChat.nickname)
+            loggingUser.chats.push(newMessage)
+            friendChat.chats.push(newMessage)
             setMessage((messages) => {
                 let newUserMessage = [...messages]
                 newUserMessage.push(newMessage)
@@ -62,14 +67,16 @@ function Chatscreen(props) {
     };
 
     var handleVideoMsg = () => {
-        friendChat.lastMessages.set([loggingUser.nickname, friendChat.nickname], "Sent a video")
         console.log("upload Video");
         var thisElement = document.getElementById("videoInput");
         var reader = new FileReader();
         reader.onload = function () {
-            var thisVideo = reader.result;
-            var newMessage = new Message(thisVideo, new Date(), "video", loggingUser.nickname, friendChat.nickname);
-            loggingUser.chats.push(newMessage);
+            var thisVideo = reader.result
+            var time = new Date().getTime()
+            friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent a video" + "*" + time)
+            var newMessage = new Message(thisVideo, time, "video", loggingUser.nickname, friendChat.nickname)
+            loggingUser.chats.push(newMessage)
+            friendChat.chats.push(newMessage)
             setMessage((messages) => {
                 let newUserMessage = [...messages]
                 newUserMessage.push(newMessage)
@@ -100,7 +107,7 @@ function Chatscreen(props) {
                         <div><img id="myAvatar" src={loggingUser.avatar} /></div>
                         <div><span id="myNickname">{loggingUser.nickname}</span></div>
                         </div>
-                        <AddFriend loggedUser={loggingUser} setFriends={setFriends} />
+                        <AddFriend loggingUser={loggingUser} setFriends={setFriends} />
                     </div>
                     <ContactCard loggingUser={loggingUser} userFriends={friends} setFriendChat={setFriendChat} />
                 </div>

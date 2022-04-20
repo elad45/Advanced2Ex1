@@ -10,6 +10,7 @@ function AddFriend(props) {
     const handleShow = () => setShow(true);
     const handleAdd = () => {
         let friendNick  = document.getElementById("friendNick").value
+        props.loggingUser.friends.push(friendNick)
         let friendUser = usersList.find(x => x.nickname === friendNick)
         if (friendUser) {
             props.setFriends((currentFriends)=>{
