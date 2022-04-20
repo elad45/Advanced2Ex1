@@ -1,6 +1,7 @@
 import Message from "./Message";
 import usersList from './usersDB'
 import {Link ,useNavigate} from 'react-router-dom'
+import './Registerform.css'
 
 function Registerform() {
     const navigate = useNavigate();
@@ -20,17 +21,30 @@ function Registerform() {
         }
         var userPassword = document.getElementById("loginPassword").value;
         var passwordVerification = document.getElementById("verifyPassword").value;
-        //checks if passwords are the same
-        if (passwordVerification !== userPassword) {
-            alert("Password doesn't match");
-        }
+        var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,}$/;
         //checks if username already exists in the system
-        else if (usersList.find(x => x.username === userID)) {
+        if (usersList.find(x => x.username === userID)) {
             alert("Username already exists")
         }
+        //no blank password
         else if (!userPassword){
             alert("Enter a password")
         }
+        else if (userPassword.length < 5) {
+            alert("Password length should be at least 5 characters long")
+
+        }
+        
+        else if(!userPassword.match(paswd)) {
+            alert("Password must contain at least one numeric digit and a special character(!@#$%^&*)")
+        }
+        //checks if passwords are the same
+        else if (passwordVerification !== userPassword) {
+                    alert("Password doesn't match");
+                }
+        
+        
+
         else {
             //in case no avatar was inserted. ------CONDITION HAS TO BE CHECKED!!!!!!!----------------------------
             if (!userAvatar) {
@@ -43,16 +57,16 @@ function Registerform() {
                 nickname: userNick,
                 avatar: userAvatar,
                 friends: [],
-                chats: [new Message("Hello", new Date(), "Michael", "Boaz"), new Message("Hello", new Date(), "Boaz", "Michael")]
+                chats: [new Message("Hello", new Date(), "Michael", "Boaz34"), new Message("Hello", new Date(), "Boaz34", "Michael12")]
             }
             usersList.push(newUser)
             localStorage.setItem('currentUser', newUser.username)
             navigate("/chat")
 
-
         }
     }
     return (
+        <div className="registerbox">
             <span className="d-flex justify-content-center">
                 <div>
                     <div className="d-flex justify-content-center">
@@ -102,6 +116,7 @@ function Registerform() {
                     </div>
                 </div>
             </span>
+            </div>
     );
 }
 

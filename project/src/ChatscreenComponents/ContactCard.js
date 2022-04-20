@@ -17,7 +17,7 @@ const ContactCard = (props) => {
     usersList.forEach(creatingFriendsArr)
 
     return (
-            <ul className="list-unstyled chat-list overflow-auto" id="friendsList">
+            <ul className="list-unstyled chat-list overflow-auto h-100">
                 {
                     friendsObjects.map((friend) => (
                         <div onClick={() => { props.setFriendChat(friend) }}>
@@ -25,7 +25,7 @@ const ContactCard = (props) => {
                                 <img src={friend.avatar} />
                                 <div className="about">
                                     <div className="name">{friend.nickname}</div>
-                                    <div className="status"> last seen 9 mins ago </div>
+                                    <div className="status"> {props.loggingUser.lastMessages.get([friend.nickname, props.loggingUser.nickname])} </div>
                                 </div>
                             </li>
                         </div>

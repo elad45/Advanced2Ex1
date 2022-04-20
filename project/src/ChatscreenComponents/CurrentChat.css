@@ -16,23 +16,15 @@
 
 /*general padding*/
 #chat-messages-list{
+    margin: 0;
     list-style: none;
+    border-top: 2px solid #f4f7f6;
     padding-left: 20px;
     padding-top: 20px;
     padding-right: 20px;
-    /* removes the default margin at the bottom */
-    margin-block-start: 0em;
-    margin-block-end: 0em;
+    
 }
 
-#chat-messages{
+.chat-messages{
     padding-bottom: 15px;
-}
-
-#chat-history-container{
-    position:absolute;
-    top: 22%;
-    left: 0%;
-    right: 0%;
-    bottom: 0%;
 }

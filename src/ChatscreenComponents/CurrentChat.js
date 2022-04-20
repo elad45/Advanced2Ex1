@@ -14,10 +14,9 @@ const CurrentChat = (props) => {
     ((message.author == props.loggingUser.nickname && message.receiver == props.hisFriend.nickname) ||
         (message.author == props.hisFriend.nickname && message.receiver == props.loggingUser.nickname)))
 
-        
     return (
         <div id="chat-history-container">
-            <div className="chat-history overflow-auto h-100" id = "scrollhere">
+            <div className="chat-history overflow-auto h-100" id="scrollhere">
                 <ul id="chat-messages-list">
                     {
                         loggingUserMessages.map((message) => {
@@ -50,10 +49,62 @@ const CurrentChat = (props) => {
                                         (<li className="clearfix" id="chat-messages">
                                             <div className="message-data text-right">
                                             </div>
-                                            <img className="message other-message float-right" src={message.data} />
+                                            <img className="message other-message float-right" style={{ maxWidth: "50%" }} src={message.data} />
                                         </li>)
                                 )
                             }
+
+                            else if (message.type == "audio") {
+                                return (
+                                    message.author == props.loggingUser.nickname ?
+                                        (<li className="clearfix" id="chat-messages">
+                                            <div className="message-data">
+                                            </div>
+                                            <audio controls className="message my-message">
+                                                <source src={message.data} />
+                                                The “audio” tag is not supported by your browser.
+                                            </audio>
+                                        </li>)
+                                        :
+                                        (<li className="clearfix" id="chat-messages">
+                                            <div className="message-data text-right">
+                                            </div>
+                                            <audio controls className="message my-message">
+                                                <source src={message.data} />
+                                                The “audio” tag is not supported by your browser.
+                                            </audio>
+                                        </li>)
+                                )
+                            }
+
+                            else if (message.type == "video") {
+                                return (
+                                    message.author == props.loggingUser.nickname ?
+                                        (<li className="clearfix" id="chat-messages">
+                                            <div className="message-data">
+                                            </div>
+                                            <video controls className="message my-message" style={{ maxWidth: "65%" }}>
+                                                <source src={message.data} />
+                                                The “video” tag is not supported by your browser.
+                                            </video>
+                                        </li>)
+                                        :
+                                        (<li className="clearfix" id="chat-messages">
+                                            <div className="message-data text-right">
+                                            </div>
+                                            <video controls className="message my-message" style={{ maxWidth: "65%" }}>
+                                                <source src={message.data} />
+                                                The “video” tag is not supported by your browser. Click [here] to download the sound file.
+                                            </video>
+                                        </li>)
+                                )
+                            }
+
+
+
+
+
+
                         })
                     }
                 </ul>

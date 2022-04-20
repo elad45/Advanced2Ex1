@@ -1,6 +1,6 @@
 import {Link, useNavigate} from "react-router-dom";
 import usersList from './usersDB'
-
+import './Loginform.css'
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ function LoginForm() {
     }
 
     return (
-        
+        <div className="loginbox">
         <form action="">
         <span className="d-flex justify-content-center">
             <div>
@@ -39,9 +39,9 @@ function LoginForm() {
                 </div>
                 
                 <div className="row mb-3">
-                    <label htmlFor="loginPassword" className="col-sm-3 col-form-label">Password</label>
+                    <label htmlFor="loginPassword" className="col-sm-3 col-form-label-sm">Password</label>
                     <div className="col-sm-7">
-                        <input type="password" className="form-control" id="loginPassword" placeholder="Enter password" required/>
+                        <input type="password" className="form-control form-control-sm" id="loginPassword" placeholder="Enter password" required/>
                     </div>
                 </div>
                 <div className="row-sm">
@@ -51,7 +51,7 @@ function LoginForm() {
             </div>            
         </span>
         </form>
-        
+        </div>
     );
 }
 

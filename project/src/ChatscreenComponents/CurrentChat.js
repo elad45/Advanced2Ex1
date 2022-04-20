@@ -15,27 +15,97 @@ const CurrentChat = (props) => {
         (message.author == props.hisFriend.nickname && message.receiver == props.loggingUser.nickname)))
 
     return (
-        <div id="chat-history-container">
-            <div className="chat-history overflow-auto h-100">
-                <ul id="chat-messages-list">
+                <ul className="chat-history overflow-auto h-100" id="chat-messages-list">
                     {
-                        loggingUserMessages.map((message) =>
-                            message.author == props.loggingUser.nickname ?
-                                (<li className="clearfix" id="chat-messages">
-                                    <div className="message-data">
-                                    </div>
-                                    <div className="message my-message">{message.data}</div>
-                                </li>)
-                                :
-                                (<li className="clearfix" id="chat-messages">
-                                    <div className="message-data text-right">
-                                    </div>
-                                    <div className="message other-message float-right">{message.data} </div>
-                                </li>))
+                        loggingUserMessages.map((message) => {
+                            if (message.type == "text") {
+                                return (
+                                    message.author == props.loggingUser.nickname ?
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data">
+                                            </div>
+                                            <div className="message my-message">{message.data}</div>
+                                        </li>)
+                                        :
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data text-right">
+                                            </div>
+                                            <div className="message other-message float-right">{message.data} </div>
+                                        </li>)
+                                )
+                            }
+
+                            else if (message.type == "image") {
+                                return (
+                                    message.author == props.loggingUser.nickname ?
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data">
+                                            </div>
+                                            <img className="message my-message" style={{ maxWidth: "50%" }} src={message.data} />
+                                        </li>)
+                                        :
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data text-right">
+                                            </div>
+                                            <img className="message other-message float-right" style={{ maxWidth: "50%" }} src={message.data} />
+                                        </li>)
+                                )
+                            }
+
+                            else if (message.type == "audio") {
+                                return (
+                                    message.author == props.loggingUser.nickname ?
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data">
+                                            </div>
+                                            <audio controls className="message my-message">
+                                                <source src={message.data} />
+                                                The “audio” tag is not supported by your browser.
+                                            </audio>
+                                        </li>)
+                                        :
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data text-right">
+                                            </div>
+                                            <audio controls className="message my-message">
+                                                <source src={message.data} />
+                                                The “audio” tag is not supported by your browser.
+                                            </audio>
+                                        </li>)
+                                )
+                            }
+
+                            else if (message.type == "video") {
+                                return (
+                                    message.author == props.loggingUser.nickname ?
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data">
+                                            </div>
+                                            <video controls className="message my-message" style={{ maxWidth: "65%" }}>
+                                                <source src={message.data} />
+                                                The “video” tag is not supported by your browser.
+                                            </video>
+                                        </li>)
+                                        :
+                                        (<li className="clearfix chat-messages">
+                                            <div className="message-data text-right">
+                                            </div>
+                                            <video controls className="message my-message" style={{ maxWidth: "65%" }}>
+                                                <source src={message.data} />
+                                                The “video” tag is not supported by your browser. Click [here] to download the sound file.
+                                            </video>
+                                        </li>)
+                                )
+                            }
+
+
+
+
+
+
+                        })
                     }
                 </ul>
-            </div>
-        </div>
     );
 }
 
