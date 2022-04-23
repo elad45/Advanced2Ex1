@@ -11,9 +11,9 @@ import AudioMsg from '../AudioMsg';
 function Chatscreen(props) {
     var loggedPersonUsername = localStorage.getItem("currentUser")
     var loggingUser = usersList.find(x => x.username == loggedPersonUsername)
-    if (localStorage.getItem(loggingUser.username)) {
-        loggingUser.avatar = localStorage.getItem(loggingUser.username)
-    }
+//    if (localStorage.getItem(loggingUser.username)) {
+//        loggingUser.avatar = localStorage.getItem(loggingUser.username)
+//    }
     // will be updated every time we add a friend to the current user
     const [friends, setFriends] = useState(loggingUser.friends);
     // will be updated every time we click on a contact Card
@@ -151,11 +151,11 @@ function Chatscreen(props) {
                     <CurrentChat loggingUser={loggingUser} hisFriend={friendChat} />
                     <div className="input-group mb-3" id="chat-line">
                         <div className="input-group-prepend">
-                            <input id="imageInput" type="file" onChange={handleImageMsg} accept="image/*" style={{ opacity: "0", width: "20%" }} hidden></input>
+                            <input id="imageInput" type="file" onChange={handleImageMsg} accept="image/*" hidden></input>
 
                             <button className="iconBoxes bi bi-image" id="imageUpload" onClick={clickImageInput}><i> </i></button>
 
-                            <input id="videoInput" type="file" onChange={handleVideoMsg} accept="video/*" style={{ opacity: "0", width: "20%" }} hidden></input>
+                            <input id="videoInput" type="file" onChange={handleVideoMsg} accept="video/*"  hidden></input>
 
                             <button className="iconBoxes bi bi-camera-reels" id="videoUpload" onClick={clickVideoInput}><i ></i></button>
 
