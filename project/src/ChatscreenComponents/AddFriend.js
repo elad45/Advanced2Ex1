@@ -9,17 +9,32 @@ function AddFriend(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleAdd = () => {
-        let friendNick  = document.getElementById("friendNick").value
-        props.loggingUser.friends.push(friendNick)
-        let friendUser = usersList.find(x => x.nickname === friendNick)
+        let friendNick = document.getElementById("friendNick").value
+        let friendUser = usersList.find(x => x.nickname == friendNick)
+
         if (friendUser) {
-            props.setFriends((currentFriends)=>{
-                let newFriends=[...currentFriends];
+            //User can't add himself as a contact
+            if (props.loggingUser.nickname==friendNick) {
+                alert("User can't add himself as a contact");
+                return;
+            }
+            //User can't add a friend that already in his contact list
+            if (props.loggingUser.friends.find(x=>x == friendNick)) {
+                alert("Friend already in contacts list");
+                return;
+            }
+            props.setFriends((currentFriends) => {
+                let newFriends = [...currentFriends];
+                props.loggingUser.friends.push(friendNick)
                 newFriends.push(friendNick)
+                handleClose();
                 return newFriends;
             })
         }
-        handleClose();
+        //No such friend in database
+        else{
+            alert("Friend doesn't exist")
+        }
     }
 
     return (

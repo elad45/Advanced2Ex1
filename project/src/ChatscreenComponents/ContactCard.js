@@ -17,7 +17,11 @@ const ContactCard = (props) => {
     usersList.forEach(creatingFriendsArr)
 
     function timeago(friend) {
-        let combinedString = props.loggingUser.lastMessages.get(friend.nickname + props.loggingUser.nickname)
+        if(props.loggingUser.nickname>=friend.nickname){
+            var combinedString = props.loggingUser.lastMessages.get(props.loggingUser.nickname + friend.nickname)
+        } else {
+            var combinedString = props.loggingUser.lastMessages.get(friend.nickname + props.loggingUser.nickname)
+        }
         if (typeof combinedString === 'string'){
         let splitString = combinedString.split('*')
         var date = parseInt(splitString[1])

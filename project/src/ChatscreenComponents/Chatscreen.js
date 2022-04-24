@@ -11,9 +11,9 @@ import AudioMsg from '../AudioMsg';
 function Chatscreen(props) {
     var loggedPersonUsername = localStorage.getItem("currentUser")
     var loggingUser = usersList.find(x => x.username == loggedPersonUsername)
-    if (localStorage.getItem(loggingUser.username)) {
-        loggingUser.avatar = localStorage.getItem(loggingUser.username)
-    }
+//    if (localStorage.getItem(loggingUser.username)) {
+//        loggingUser.avatar = localStorage.getItem(loggingUser.username)
+//    }
     // will be updated every time we add a friend to the current user
     const [friends, setFriends] = useState(loggingUser.friends);
     // will be updated every time we click on a contact Card
@@ -21,7 +21,7 @@ function Chatscreen(props) {
 
     const [userMessages, setMessage] = useState(loggingUser.chats)
 
-    const element = document.getElementById("chat-messages-list");
+    //const element = document.getElementById("chat-messages-list");
    
     var handleSendMessage = () => {
 
@@ -47,11 +47,12 @@ function Chatscreen(props) {
             return newUserMessage
         })
     }
-    useEffect(() => {
-        if (element)
-            element.scrollIntoView(false)
-    })
+  //  useEffect(() => {
+  //      if (element)
+  //          element.scrollIntoView(false)
+  //  })
 
+    
     var handleImageMsg = () => {
         console.log("upload Image");
         var thisElement = document.getElementById("imageInput");
@@ -60,16 +61,17 @@ function Chatscreen(props) {
             var thisImage = reader.result;
             var time = new Date().getTime()
             if(loggingUser.nickname>=friendChat.nickname){
-                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent an image" + "*" + time)
-                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent an image" + "*" + time)
+                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "An image has been sent" + "*" + time)
+                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "An image has been sent" + "*" + time)
             } else {
-                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent an image" + "*" + time)
-                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent an image" + "*" + time)
+                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "An image has been sent" + "*" + time)
+                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "An image has been sent" + "*" + time)
             }
             var newMessage = new Message(thisImage, time, "image", loggingUser.nickname, friendChat.nickname)
             loggingUser.chats.push(newMessage)
             // temporary line, thats the work of the server
             friendChat.chats.push(newMessage)
+            document.getElementById("imageInput").value = "";
             setMessage((messages) => {
                 let newUserMessage = [...messages]
                 newUserMessage.push(newMessage)
@@ -78,6 +80,7 @@ function Chatscreen(props) {
 
         };
         reader.readAsDataURL(thisElement.files[0]);
+        
     };
 
     var handleVideoMsg = () => {
@@ -88,19 +91,21 @@ function Chatscreen(props) {
             var thisVideo = reader.result
             var time = new Date().getTime()
             if(loggingUser.nickname>=friendChat.nickname){
-                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent a video" + "*" + time)
-                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "Sent a video" + "*" + time)
+                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "A video has been sent" + "*" + time)
+                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "A video has been sent" + "*" + time)
             } else {
-                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent a video" + "*" + time)
-                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "Sent a video" + "*" + time)
+                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "A video has been sent" + "*" + time)
+                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "A video has been sent" + "*" + time)
             }
             var newMessage = new Message(thisVideo, time, "video", loggingUser.nickname, friendChat.nickname)
             loggingUser.chats.push(newMessage)
             // temporary line, thats the work of the server
             friendChat.chats.push(newMessage)
+            document.getElementById("videoInput").value = "";
             setMessage((messages) => {
                 let newUserMessage = [...messages]
                 newUserMessage.push(newMessage)
+                console.log(newUserMessage)
                 return newUserMessage
             })
 
@@ -117,7 +122,12 @@ function Chatscreen(props) {
     var clickVideoInput = () => {
         document.getElementById("videoInput").click();
     }
-
+    const element = document.getElementById("chat-messages-list");        
+    useEffect(() => {
+        if (element){
+            element.scrollTop = element.scrollHeight
+        }
+    })
     return (
         <div>
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -142,11 +152,11 @@ function Chatscreen(props) {
                     <CurrentChat loggingUser={loggingUser} hisFriend={friendChat} />
                     <div className="input-group mb-3" id="chat-line">
                         <div className="input-group-prepend">
-                            <input id="imageInput" type="file" onChange={handleImageMsg} accept="image/*" style={{ opacity: "0", width: "20%" }} hidden></input>
+                            <input id="imageInput" type="file" onChange={handleImageMsg} accept="image/*" hidden></input>
 
                             <button className="iconBoxes bi bi-image" id="imageUpload" onClick={clickImageInput}><i> </i></button>
 
-                            <input id="videoInput" type="file" onChange={handleVideoMsg} accept="video/*" style={{ opacity: "0", width: "20%" }} hidden></input>
+                            <input id="videoInput" type="file" onChange={handleVideoMsg} accept="video/*"  hidden></input>
 
                             <button className="iconBoxes bi bi-camera-reels" id="videoUpload" onClick={clickVideoInput}><i ></i></button>
 

@@ -2,29 +2,37 @@ import Message from "./Message";
 import usersList from './usersDB'
 import {Link ,useNavigate} from 'react-router-dom'
 import './Registerform.css'
+import { useState } from 'react'
 
 function Registerform() {
     const navigate = useNavigate();
-
     const RegisterClick = (e) => {
         e.preventDefault();
         // inserting the user's input into variables
         var userID = document.getElementById("loginID").value;
         var userNick = document.getElementById("nickname").value;
-        var userAvatar = document.getElementById("Avatar").files[0];
-        if(userAvatar){
-            const reader = new FileReader();
-            reader.addEventListener("load", () => {
-                localStorage.setItem(userID ,reader.result)
-            })
-            reader.readAsDataURL(userAvatar)
+        var img = document.getElementById("Avatar").files[0];
+        if(img){
+            var userAvatar=URL.createObjectURL(img)
+        //var reader = new FileReader();
+        //reader.onload = function () {
+        //        userAvatar = reader.result;
+        //    }
+        //    reader.readAsDataURL(userAvatar);
+        }
+        else{
+            var userAvatar = "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
         }
         var userPassword = document.getElementById("loginPassword").value;
         var passwordVerification = document.getElementById("verifyPassword").value;
         var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,}$/;
-        //checks if username already exists in the system
+        //checks if username already exists in the database
         if (usersList.find(x => x.username === userID)) {
             alert("Username already exists")
+        }
+        //checks if nickname already exists in the database
+        else if (usersList.find(x => x.nickname === userNick)) {
+            alert("Nickname already exists")
         }
         //no blank password
         else if (!userPassword){
@@ -43,11 +51,6 @@ function Registerform() {
                     alert("Password doesn't match");
                 }
         else {
-            //in case no avatar was inserted. ------CONDITION HAS TO BE CHECKED!!!!!!!----------------------------
-            if (!userAvatar) {
-                localStorage.setItem(userID ,"https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y")
-            }
-
              var newUser = {
                 username: userID,
                 password: userPassword,

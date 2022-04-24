@@ -43,7 +43,7 @@ body{
 
 /* for the right messages */
 .float-right {
-    float: right
+    float: right;
 }
 
 /* positioning the chat bar according to its parent */

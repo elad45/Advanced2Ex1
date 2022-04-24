@@ -316,7 +316,14 @@ function AudioMsg(props) {
         props.setFriendChat((prevFriendChat) => {
             var loggingUser = props.loggingUser;
             var friendChat = prevFriendChat;
-
+            var time = new Date().getTime()
+            if(loggingUser.nickname>=friendChat.nickname){
+                loggingUser.lastMessages.set(loggingUser.nickname + friendChat.nickname, "An audio has been sent" + "*" + time)
+                friendChat.lastMessages.set(loggingUser.nickname + friendChat.nickname, "An audio has been sent" + "*" + time)
+            } else {
+                loggingUser.lastMessages.set(friendChat.nickname + loggingUser.nickname, "An audio has been sent" + "*" + time)
+                friendChat.lastMessages.set(friendChat.nickname + loggingUser.nickname, "An audio has been sent" + "*" + time)
+            }
             var userMessages = props.userMessages;
             var setMessage = props.setMessage;
             //read content of files (Blobs) asynchronously
