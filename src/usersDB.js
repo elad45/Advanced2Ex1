@@ -1,5 +1,7 @@
 import Message from "./Message"
-
+import video from './ArkanoidVideo.mp4'
+import audio from './audio.weba'
+import smile from './smile.jpg'
 var usersList = [
     {
         avatar: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
@@ -9,7 +11,12 @@ var usersList = [
      nickname: 'Michael12',
      avatar: "https://bootdey.com/img/Content/avatar/avatar1.png",
      friends: ["Elad56","Moshe45","Boaz34","Yossi90","Yaakov91"],    
-     chats: [new Message("Hello", new Date().getTime(),"text","Michael12","Boaz34"),new Message("Hello", new Date().getTime(),"text","Boaz34","Michael12")],
+     chats: [new Message("Hello", new Date().getTime(),"text","Michael12","Boaz34"),new Message("Hello", new Date().getTime(),"text","Boaz34","Michael12"),
+             new Message(smile,new Date().getTime(),"image","Michael12","Moshe45"),
+             new Message("Nice Smile",new Date().getTime(),"text","Moshe45","Michael12"),
+             new Message("How are you",new Date().getTime(),"text","Elad56","Michael12"),
+             new Message(video,new Date().getTime(),"video","Michael12","Elad56"),
+             new Message(audio,new Date().getTime(),"audio","Michael12","Yossi90")],
      lastMessages: new Map()
     },
 

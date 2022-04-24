@@ -105,6 +105,7 @@ function Chatscreen(props) {
             setMessage((messages) => {
                 let newUserMessage = [...messages]
                 newUserMessage.push(newMessage)
+                console.log(newUserMessage)
                 return newUserMessage
             })
 
