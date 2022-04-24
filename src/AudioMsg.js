@@ -310,7 +310,7 @@ function AudioMsg(props) {
 
 
 
-    /*********************************/
+    /************************************/
     function sendAudioMessageChatapp(recorderAudioAsBlob) {
         let reader = new FileReader();
         props.setFriendChat((prevFriendChat) => {
@@ -355,7 +355,7 @@ function AudioMsg(props) {
         reader.readAsDataURL(recorderAudioAsBlob);
 
     };
-    /*********************************/
+    /************************************/
 
 
 
