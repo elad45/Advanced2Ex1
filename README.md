@@ -48,6 +48,7 @@ The page asks you for username, nickname, password, avatar.
 
 
 Hard coded users, some of them also have friends in contact list. all users are in usersDB.js (password doesn't follow the registeration password requirements for making it easier to login).
+
 The users are listed by:
 username, password, nickname
 - Michael, abcde, Michael12 (Main user who has hard-coded chats followed by assignement requirements)
