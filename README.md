@@ -1,5 +1,5 @@
 
-Requirements:
+<h1>Requirements</h1>:
 
 For running this project it's required to have Node.JS installed on your computer.
 After that navigate to the project directory and run at the CMD the following commands:
