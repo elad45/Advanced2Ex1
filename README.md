@@ -47,5 +47,16 @@ The page asks you for username, nickname, password, avatar.
 - Avatar: you can upload an avatar image from your computer. In case you don't upload any avatar it will use a default avatar.
 
 
-Hard coded users:
-
+Hard coded users, some of them also have friends in contact list (password doesn't follow the registeration password requirements for making it easier to login):
+List by:
+username, password, nickname
+- Michael, abcde, Michael12 (Main user who has hard-coded chats followed by assignement requirements)
+- Boaz, 12345, Boaz34
+- Moshe, abc, Moshe45
+- Elad, 12, Elad56
+- Yossi, 11, Yossi90
+- Yaakov, 125, Yaakov91
+- 11, 125, 11
+- 22, 125, 22
+- 33, 125, 33
+- 44, 125, 44

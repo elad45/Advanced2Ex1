@@ -68,7 +68,7 @@ const CurrentChat = (props) => {
                                 (<li className="clearfix chat-messages">
                                     <div className="message-data text-right">
                                     </div>
-                                    <audio controls className="message my-message">
+                                    <audio controls className="message my-message float-right">
                                         <source src={message.data} />
                                         The “audio” tag is not supported by your browser.
                                     </audio>
@@ -91,7 +91,7 @@ const CurrentChat = (props) => {
                                 (<li className="clearfix chat-messages">
                                     <div className="message-data text-right">
                                     </div>
-                                    <video controls className="message my-message" style={{ maxWidth: "65%" }}>
+                                    <video controls className="message my-message float-right" style={{ maxWidth: "65%" }}>
                                         <source src={message.data} />
                                         The “video” tag is not supported by your browser.
                                     </video>
