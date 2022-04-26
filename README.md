@@ -14,7 +14,7 @@ after it has finished, navigate back to project_name directory run
 Open [http://localhost:3000](http://localhost:3000) to view the project in your browser.
 
 
-How to use the project:
+<h3>How to use the project:</h3>
 
 The project has 3 routes.
 1) Login - http://localhost:3000
