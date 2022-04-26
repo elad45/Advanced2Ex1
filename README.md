@@ -1,70 +1,49 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Requirements:
 
-## Available Scripts
+For running this project it's required to have Node.JS installed on your computer.
+After that navigate to the project directory and run at the CMD the following commands:
+### `npx create-react-app project_name`
+where project_name is the project name you want to have and that's will be the name of the directory. This command will install some react realted files.
 
-In the project directory, you can run:
+It's required to have react bootstrap files as well. please run the follwing command at the node_modules directory
+### `npm install react-bootstrap bootstrap`
 
+after it has finished, navigate back to project_name directory run
 ### `npm start`
+Open [http://localhost:3000](http://localhost:3000) to view the project in your browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+How to use the project:
 
-### `npm test`
+The project has 3 routes.
+1) Login - http://localhost:3000
+2) Register - http://localhost:3000/register
+3) Chat - http://localhost:3000/chat
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project holds some hard-coded users.
+each user has:
+username and password: used for login
+nickname: This is the name others identify you and used for adding contacts as well.
 
-### `npm run build`
+Once you login or register you will be logged to the user's chat related.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Please login to the following user:
+username: Michael
+password: abcde
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This user has some hard-coded messages and contacts as required in the assignment requirements.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Some information for the Register page:
+The page asks you for username, nickname, password, avatar.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Username, nickname: Must be unique. In case you enter a username or nickname that's already in the system it will not let you use this names and ask you to change. (Be advised that there are some hard-coded users in the system which appear at the bottom of the README)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Password: must contain at least 5 characters with at least one digit and one special character     (!@#$%^&*)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Avatar: you can upload an avatar image from your computer. In case you don't upload any avatar it will use a default avatar.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+Hard coded users:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
