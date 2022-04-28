@@ -27,4 +27,5 @@
 
 .chat-messages{
     padding-bottom: 15px;
+    word-break: break-word;
 }
