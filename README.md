@@ -5,7 +5,7 @@
 For running this project it's required to have Node.JS installed on your computer.
 After that navigate to the project directory and run at the CMD the following commands:
 ### `npx create-react-app project_name`
-where project_name is the project name you want to have and that's will be the name of the directory. This command will install some react realted files.
+where project_name is the project name you want to have and that's will be the name of the directory where you download the repository files as well. This command will install some react realted files.
 
 It's required to have react bootstrap files as well. please run the follwing command at the node_modules directory (you can navigate there by cd project_name cd node_modules)
 ### `npm install react-bootstrap bootstrap`
